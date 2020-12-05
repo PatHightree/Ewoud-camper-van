@@ -346,6 +346,10 @@ MonoBehaviour:
   Target: {fileID: 1919565033}
   Scale1: {x: 1.99, y: 1.9, z: 4.9}
   Scale2: {x: 1.99, y: 1.9, z: 5.3}
+  plantAction:
+    actionPath: /actions/default/in/InteractUI
+    needsReinit: 0
+  hand: {fileID: 1425517280}
 --- !u!4 &474335093
 Transform:
   m_ObjectHideFlags: 0
@@ -1848,6 +1852,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b2c5f2a412d57524ea954194a2bcebb6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b1338ade278e0e469e6fe707ddfd67d, type: 3}
+--- !u!114 &1425517280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 918665642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e3e4511966ba94d8ba0b98c6c62f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1605752176
 GameObject:
   m_ObjectHideFlags: 0

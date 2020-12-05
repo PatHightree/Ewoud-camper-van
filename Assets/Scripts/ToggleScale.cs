@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
+﻿using UnityEngine;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class ToggleScale : MonoBehaviour
 {
     public Transform Target;
     public Vector3 Scale1;
     public Vector3 Scale2;
+    public SteamVR_Action_Boolean plantAction;
+    public Hand hand;
 
     private Vector3 m_initScale;
     private bool m_isScaled;
@@ -22,6 +22,33 @@ public class ToggleScale : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             Toggle();
+    }
+
+    private void OnEnable()
+    {
+        if (hand == null)
+            hand = GetComponent<Hand>();
+
+        if (plantAction == null)
+        {
+            Debug.LogError("<b>[SteamVR Interaction]</b> No plant action assigned", this);
+            return;
+        }
+
+        plantAction.AddOnChangeListener(OnToggleActionChange, hand.handType);
+    }
+
+    private void OnDisable()
+    {
+        if (plantAction != null)
+            plantAction.RemoveOnChangeListener(OnToggleActionChange, hand.handType);
+    }
+    private void OnToggleActionChange(SteamVR_Action_Boolean actionIn, SteamVR_Input_Sources inputSource, bool newValue)
+    {
+        if (newValue)
+        {
+            Toggle();
+        }
     }
     
     public void Toggle()
